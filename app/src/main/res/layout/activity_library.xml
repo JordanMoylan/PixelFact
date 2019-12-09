@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.wit.library.activities.LibraryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/sfpixelate"
+            android:fitsSystemWindows="true"
+            app:elevation="0dip"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarAdd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:minHeight="30dp"
+                android:text="@string/appTitle"
+                app:logo="@mipmap/ic_launcher"
+                app:titleTextColor="@color/colorPrimary" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/appBarLayout"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+
+                <EditText
+                    android:id="@+id/bookTitleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpixelate"
+                    android:hint="@string/hint_libraryTitle"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:maxLines="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp">
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/bookDescriptionInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_below="@id/bookTitleInput"
+                    android:fontFamily="@font/sfpixelate"
+                    android:hint="@string/hint_libraryDescription"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLength="300"
+                    android:maxLines="2"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/typeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/spinner_category"
+                    android:fontFamily="@font/sfpixelate"
+                    android:layout_below="@id/bookDescriptionInput"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/bookCategoryInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_below="@id/typeSpinner"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:paddingTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/importanceSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@id/bookCategoryInput"
+                    android:fontFamily="@font/sfpixelate"
+                    android:text="@string/spinner_importance"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/factFictionInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_below="@id/importanceSpinner"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="@font/crimson_text"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:id="@+id/factImage"
+                    android:layout_width="210dp"
+                    android:layout_height="214dp"
+                    android:layout_below="@id/factFictionInput"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    android:elevation="0.5dp"/>
+
+
+                <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_width="146dp"
+                    android:layout_height="61dp"
+                    android:layout_alignTop="@+id/factImage"
+                    android:layout_alignBottom="@+id/factImage"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="77dp"
+                    android:layout_marginBottom="77dp"
+                    android:layout_toEndOf="@+id/factImage"
+                    android:background="@color/colorAccent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/button_addImage"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:elevation="3dp"/>
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/factImage"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#03A9F4"
+                    android:fontFamily="@font/source_sans_pro_regular"
+                    android:paddingTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:paddingBottom="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_addlibrary"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:elevation="3dp"/>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
