@@ -5,9 +5,12 @@
   <application
     android:name="org.wit.library.main.MainApp"
     android:allowBackup="true"
+      android:hardwareAccelerated="true"
+      android:hapticFeedbackEnabled="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
+      android:fontFamily="@font/sfpixelate"
+    android:roundIcon="@mipmap/ic_launcher"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
 

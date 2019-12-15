@@ -8,7 +8,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.library.helpers.exists
 import org.wit.library.helpers.read
 import org.wit.library.helpers.write
-import org.wit.library.R
 import java.util.*
 
 val JSON_FILE = "facts.json"
@@ -50,8 +49,8 @@ class FactsJSONStore : LibraryStore, AnkoLogger {
             foundFacts.category = librarys.category
             foundFacts.factvariable = librarys.factvariable
             foundFacts.image = librarys.image
-            serialize()
         }
+        serialize()
     }
 
     override fun delete(librarys: LibraryModel) {

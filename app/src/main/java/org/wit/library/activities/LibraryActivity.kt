@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_library.*
+import kotlinx.android.synthetic.main.card_library.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -29,6 +30,7 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var library = LibraryModel()
   val IMAGE_REQUEST = 1
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -49,7 +51,7 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
       "Misc"
     )
 
-    var factOption = arrayOf<String>("Important", "non important")
+    var factOption = arrayOf<String>("Important", "Unimportant")
 
     var bookCategory = findViewById(R.id.bookCategoryInput) as Spinner
     var factFiction = findViewById(R.id.factFictionInput) as Spinner
@@ -114,6 +116,23 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
           app.facts.update(libraryInput.copy())
         } else {
           app.facts.create(libraryInput.copy())
+        }
+      }
+      info("add Button Pressed: $bookTitleInput")
+      setResult(AppCompatActivity.RESULT_OK)
+      finish()
+    }
+
+    deleteButton.setOnClickListener() {
+      libraryInput.title = bookTitleInput.text.toString()
+      libraryInput.description = bookDescriptionInput.text.toString()
+      libraryInput.category = bookCategoryInput.selectedItem as String
+      libraryInput.factvariable = factFictionInput.selectedItem as String
+      if (libraryInput.title.isEmpty()) {
+        toast(R.string.enter_fact_title)
+      } else {
+        if (edit) {
+          app.facts.delete(libraryInput.copy())
         }
       }
       info("add Button Pressed: $bookTitleInput")
