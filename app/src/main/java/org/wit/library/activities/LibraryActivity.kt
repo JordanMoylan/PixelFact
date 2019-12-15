@@ -2,13 +2,11 @@ package org.wit.library.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_library.*
 import kotlinx.android.synthetic.main.card_library.*
@@ -22,6 +20,7 @@ import org.wit.library.models.LibraryModel
 import org.wit.library.helpers.readImage
 import org.wit.library.helpers.readImageFromPath
 import org.wit.library.helpers.showImagePicker
+import com.mancj.materialsearchbar.MaterialSearchBar
 
 class LibraryActivity : AppCompatActivity(), AnkoLogger {
 
@@ -36,8 +35,8 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_library)
 
-//creating variables for spinners
 
+//creating variables for spinners
     var categoryOf = arrayOf<String>(
       "Educational",
       "Fun",
@@ -81,6 +80,7 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
       override fun onNothingSelected(adapterView: AdapterView<*>) {
       }
     }
+
 
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)

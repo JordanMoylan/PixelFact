@@ -6,8 +6,7 @@
       android:id="@+id/action_search"
       android:title="@string/searchFact"
       android:icon="@drawable/ic_search_white_24dp"
-      app:showAsAction="ifRoom|collapseActionView"
-      />
+      app:showAsAction="ifRoom|collapseActionView"/>
 
   <item
       android:id="@+id/item_add"
@@ -15,5 +14,4 @@
       android:icon="@android:drawable/ic_menu_add"
       android:title="@string/menu_addLibrary"
       app:showAsAction="always"/>
-
 </menu>
