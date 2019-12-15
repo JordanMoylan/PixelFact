@@ -3,4 +3,6 @@
   <color name="colorPrimary">#FFFFFF</color>
   <color name="colorPrimaryDark">#171717</color>
   <color name="colorAccent">#03A9F4</color>
+  <color name="deleteCol">#EC407A</color>
+  <color name="cardList">#E5FFFFFF</color>
 </resources>

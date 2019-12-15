@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_library.*
+import kotlinx.android.synthetic.main.card_library.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -21,6 +22,7 @@ import org.wit.library.models.LibraryModel
 import org.wit.library.helpers.readImage
 import org.wit.library.helpers.readImageFromPath
 import org.wit.library.helpers.showImagePicker
+import org.wit.library.models.LocationModel
 
 class LibraryActivity : AppCompatActivity(), AnkoLogger {
 
@@ -29,6 +31,8 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
   var library = LibraryModel()
   val IMAGE_REQUEST = 1
+  val LOCATION_REQUEST = 2
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -49,7 +53,7 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
       "Misc"
     )
 
-    var factOption = arrayOf<String>("Important", "non important")
+    var factOption = arrayOf<String>("Important", "Unimportant")
 
     var bookCategory = findViewById(R.id.bookCategoryInput) as Spinner
     var factFiction = findViewById(R.id.factFictionInput) as Spinner
@@ -102,6 +106,16 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
       btnAdd.setText(R.string.save_book)
     }
 
+    locationAdd.setOnClickListener {
+      val location = LocationModel(52.245696, -7.139102, 15f)
+      if (libraryInput.zoom != 0f) {
+        location.lat =  libraryInput.lat
+        location.lng = libraryInput.lng
+        location.zoom = libraryInput.zoom
+      }
+      startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+    }
+
     btnAdd.setOnClickListener() {
       libraryInput.title = bookTitleInput.text.toString()
       libraryInput.description = bookDescriptionInput.text.toString()
@@ -114,6 +128,23 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
           app.facts.update(libraryInput.copy())
         } else {
           app.facts.create(libraryInput.copy())
+        }
+      }
+      info("add Button Pressed: $bookTitleInput")
+      setResult(AppCompatActivity.RESULT_OK)
+      finish()
+    }
+
+    deleteButton.setOnClickListener() {
+      libraryInput.title = bookTitleInput.text.toString()
+      libraryInput.description = bookDescriptionInput.text.toString()
+      libraryInput.category = bookCategoryInput.selectedItem as String
+      libraryInput.factvariable = factFictionInput.selectedItem as String
+      if (libraryInput.title.isEmpty()) {
+        toast(R.string.enter_fact_title)
+      } else {
+        if (edit) {
+          app.facts.delete(libraryInput.copy())
         }
       }
       info("add Button Pressed: $bookTitleInput")
@@ -148,6 +179,20 @@ class LibraryActivity : AppCompatActivity(), AnkoLogger {
           libraryInput.image = data.getData().toString()
           factImage.setImageBitmap(readImage(this, resultCode, data))
           chooseImage.setText(R.string.change_fact_image)
+        }
+      }
+      LOCATION_REQUEST -> {
+        if (data != null) {
+          val location = data.extras!!.getParcelable<LocationModel>("location")
+          if (location != null) {
+            libraryInput.lat = location.lat
+          }
+          if (location != null) {
+            libraryInput.lng = location.lng
+          }
+          if (location != null) {
+            libraryInput.zoom = location.zoom
+          }
         }
       }
     }

@@ -1,30 +1,36 @@
 <resources>
-  <string name="app_name">PixelFact</string>
-  <string name="hint_libraryTitle">Title </string>
-  <string name="hint_libraryDescription">Description</string>
-  <string name="button_addlibrary">Go Forth and Prosper!</string>
-  <string name="menu_addlibrary">Add</string>
-  <string name="enter_fact_title"> Please enter a Fact title</string>
-  <string name="save_book">Update Fact</string>
-  <string name="menu_deleteFact">Delete</string>
-  <string name="select_fact_image">Select image</string>
-  <string name="change_fact_image">Change image</string>
-  <string name="button_addImage"> Add Image </string>
-  <string name="menu_cancellibrary">Cancel</string>
-  <string name="spinner_category">Type</string>
-  <string name="spinner_importance">Importance</string>
-  <string name="appTitle">PixelFact</string>
-  <string-array name="categories">
-    <item>Category:</item>
-    <item>Category:</item>
-    <item>Category:</item>
-    <item>Category:</item>
-    <item>Category:</item>
-  </string-array>
+    <string name="app_name">PixelFact</string>
+    <string name="hint_libraryTitle">Title </string>
+    <string name="hint_libraryDescription">Description</string>
+    <string name="button_addLibrary">Go Forth and Prosper!</string>
+    <string name="menu_addLibrary">Add Fact</string>
+    <string name="enter_fact_title"> Please enter a Fact title</string>
+    <string name="save_book">Update Fact</string>
+    <string name="menu_deleteFact">Delete</string>
+    <string name="select_fact_image">Select image</string>
+    <string name="change_fact_image">Change image</string>
+    <string name="button_addImage">-Add- Image</string>
+    <string name="menu_cancelLibrary">Cancel</string>
+    <string name="spinner_category">Type</string>
+    <string name="spinner_importance">Importance</string>
+    <string name="delete_button">Delete</string>
+    <string name="appTitle">PixelFact</string>
+    <string name="searchFact">Search</string>
+    <string name="imageDisplay">Displayed Image</string>
+    <string-array name="categories">
+        <item>Category:</item>
+        <item>Category:</item>
+        <item>Category:</item>
+        <item>Category:</item>
+        <item>Category:</item>
+    </string-array>
 
-  <style name="AppTheme.NoActionBar">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
-  </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <string name="title_activity_maps">Map</string>
+    <string name="locationAdd">Add location learned!</string>
 
 </resources>

@@ -45,41 +45,48 @@
                 android:padding="15dp">
 
 
-
                 <EditText
                     android:id="@+id/bookTitleInput"
-                    android:layout_width="match_parent"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="8dp"
                     android:fontFamily="@font/sfpixelate"
+                    android:gravity="start"
                     android:hint="@string/hint_libraryTitle"
                     android:inputType="text"
+                    android:lines="2"
                     android:maxLength="100"
                     android:maxLines="1"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:textAlignment="textStart"
+                    android:minLines="1"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp">
-
-                </EditText>
+                    android:textSize="20sp"
+                    app:autoSizeMaxTextSize="100sp"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeStepGranularity="2sp" />
 
                 <EditText
                     android:id="@+id/bookDescriptionInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeMaxTextSize="100sp"
+                    app:autoSizeStepGranularity="2sp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="15dp"
                     android:layout_below="@id/bookTitleInput"
                     android:fontFamily="@font/sfpixelate"
                     android:hint="@string/hint_libraryDescription"
                     android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:maxLength="300"
-                    android:maxLines="2"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:minLines="1"
+                    android:gravity="fill_horizontal"
+                    android:maxLines="4"/>
 
                 <TextView
                     android:id="@+id/typeSpinner"
@@ -111,11 +118,13 @@
                     android:id="@+id/importanceSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_below="@id/bookCategoryInput"
+                    android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_below="@id/bookCategoryInput"
                     android:fontFamily="@font/sfpixelate"
                     android:text="@string/spinner_importance"
                     android:textColor="#000"
@@ -138,53 +147,96 @@
                     android:id="@+id/factImage"
                     android:layout_width="210dp"
                     android:layout_height="214dp"
+                    android:background="@color/colorAccent"
                     android:layout_below="@id/factFictionInput"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
+                    android:contentDescription="@string/imageDisplay"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     app:srcCompat="@mipmap/ic_launcher"
-                    android:elevation="0.5dp"/>
+                    android:elevation="2dp"/>
 
 
                 <Button
                     android:id="@+id/chooseImage"
-                    android:layout_width="146dp"
-                    android:layout_height="61dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/locationAdd"
                     android:layout_alignTop="@+id/factImage"
-                    android:layout_alignBottom="@+id/factImage"
+                    android:layout_alignEnd="@+id/deleteButton"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="77dp"
-                    android:layout_marginBottom="77dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="13dp"
                     android:layout_toEndOf="@+id/factImage"
                     android:background="@color/colorAccent"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/sfpixelate"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:text="@string/button_addImage"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    android:elevation="3dp"/>
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/bookDescriptionInput"
+                    android:layout_alignTop="@+id/bookTitleInput"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/bookTitleInput"
+                    android:background="@color/deleteCol"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/sfpixelate"
+                    android:text="@string/delete_button"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/factImage"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
                     android:background="#03A9F4"
+                    android:elevation="3dp"
                     android:fontFamily="@font/source_sans_pro_regular"
-                    android:paddingTop="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/button_addlibrary"
+                    android:text="@string/button_addLibrary"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    android:elevation="3dp"/>
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/locationAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="61dp"
+                    android:layout_above="@+id/btnAdd"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@+id/factImage"
+                    android:text="@string/locationAdd"
+                    android:background="@color/colorAccent"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/sfpixelate"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"/>
 
 
             </RelativeLayout>
